@@ -1,0 +1,23 @@
+{
+  "name": "covid19-tracker",
+  "version": "1.0.0",
+  "description": "real-time app for tracking covid19 virus",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "covid19",
+    "tracker",
+    "virus",
+    "real-time"
+  ],
+  "author": "Thomas Cruzana",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.1.1",
+    "nodemon": "^2.0.4",
+    "request": "^2.88.2"
+  }
+}
