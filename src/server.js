@@ -11,16 +11,18 @@ const app = express();
 //paths for express config
 const publicDirPath = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../templates/views");
+const partialsPath = path.join(__dirname, "../templates/partials")
 
 //template engine
 app.set("view engine", "hbs");
 app.set("views", viewsPath); //set the view dir to templates dir
+hbs.registerPartials(partialsPath); //partial hbs html templates dir
 
 //use static files
 app.use(express.static(publicDirPath));
 
 app.get("/", (req, res)=>{ //homepage
-	res.send("Welcome to covid19 tracker");
+	res.render("index"); //looks in the view dir by default
 });
 
 app.get("/global-summary", (req, res)=>{ //api endpoint global summary
@@ -31,6 +33,7 @@ app.get("/global-summary", (req, res)=>{ //api endpoint global summary
 
 app.get("/reports", (req, res)=>{ //api endpoint country report
 	countryReports(req.query.country, (err, data)=>{
+		//ex: reports?country=usa
 		(err) ? res.status(400).send(err) : res.send({ data });
 	});
 

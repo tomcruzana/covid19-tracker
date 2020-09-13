@@ -1,0 +1,9 @@
+.container{
+    max-width: 2000px !important;
+}
+
+.left-sidebar{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
