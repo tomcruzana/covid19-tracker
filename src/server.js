@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require("path");
 const hbs = require("hbs");
 const request = require("request");
@@ -21,8 +22,18 @@ hbs.registerPartials(partialsPath); //partial hbs html templates dir
 //use static files
 app.use(express.static(publicDirPath));
 
+
+
 app.get("/", (req, res)=>{ //homepage
 	res.render("index"); //looks in the view dir by default
+});
+
+app.get("/statistics", (req, res)=>{ //country
+	// console.log(req.query.country);
+	// if (req.query.country === undefined || req.query.country === null) {
+    //   	res.redirect('/');
+	// }
+	res.render("country"); //looks in the view dir by default
 });
 
 app.get("/global-summary", (req, res)=>{ //api endpoint global summary
@@ -37,6 +48,10 @@ app.get("/reports", (req, res)=>{ //api endpoint country report
 		(err) ? res.status(400).send(err) : res.send({ data });
 	});
 
+});
+
+app.get("*", (req, res)=>{ //404 not found
+	res.render("404"); 
 });
 
 app.listen(port, ()=>{

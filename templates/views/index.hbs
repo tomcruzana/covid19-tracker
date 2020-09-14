@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/default.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://kit.fontawesome.com/16f6cfa047.js" crossorigin="anonymous"></script>
 
     <title>Covid19genix</title>
@@ -17,66 +18,36 @@
     <div class="container mt-5 bg-white text-dark">
 
     <!--country name-->
-        <div class="text-center">
-            <img id="country-flag-img" src="https://www.countryflags.io/US/flat/64.png" alt="..." class="rounded">
-            <p id="country-name" class="h1 font-weight-bold mb-5">UNITED STATES OF AMERICA</p> <!--dynamic data-->
-        </div>
+    <div class="text-center">
+        <img class="covid19-logo-main-gif" src="./img/corona-virus.gif" alt="..." class="rounded">
+        <p id="country-name" class="h1 font-weight-bold mb-5">SELECT A COUNTRY</p> <!--dynamic data-->
+    </div>
 
-    <!--covid19 cases-->
-    <div class="row">
-        <div class="col-sm-6 col-md-5 col-lg-4 col-xl-3">
-            <div class="left-sidebar mt-4">
-                <table class="table w-25 h4">
-                    <thead>
-                        
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th class="text-primary" scope="row"><i class="fas fa-head-side-cough"></i> Active</th>
-                        <td id="active-cases">0</td> <!--dynamic data-->
-                    </tr>
-                    <tr>
-                        <th class="text-warning" scope="row"><i class="fas fa-lungs-virus"></i> Confirmed</th>
-                        <td id="confirmed-cases">0</td> <!--dynamic data-->
-                    </tr>
-                    <tr>
-                        <th class="text-success" scope="row"><i class="fas fa-user-md"></i> Recovered</th>
-                        <td id="recovered-cases">0</td> <!--dynamic data-->
-                    </tr>
-                    <tr>
-                        <th class="text-danger" scope="row"><i class="fas fa-skull-crossbones"></i> Deaths</th>
-                        <td id="death-cases"> 0</td> <!--dynamic data-->
-                    </tr>
-                    <tr>
-                        <th scope="row">Last Update</th>
-                        <td id="last-update-cases">00/00/00 @ 12:00:00PM</td> <!--dynamic data-->
-                    </tr>
-                    </tbody>
-                </table>
+    <div class="country-summary">
+            <select class="form-control " id="countries">
+                <option>--Choose a country--</option>
+                <!--Name of countries go here-->
+            </select>
 
-            <!--covid19 self-assessment card-->
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                    <h5 class="card-title">COVID‑19 self-assessment</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">For informational purposes only. Not a medical diagnosis</h6>
-                    <p class="card-text">This resource can help you decide what kind of medical care you might need for COVID‑19.</p>
-                    <a href="https://landing.google.com/screener/covid19" class="card-link">Take a self-assessment</a>
-                    </div>
-                </div>
+
+            <div class="case-summary animate__animated animate__fadeInUp mt-4">
+                <h3><span class="font-weight-bold text-warning ">Total Confirmed:</span><span class="tconfirmed ml-3"> 0</span></h3>
+
+                <h3><span class="font-weight-bold text-success ">Total Recovered:</span><span class="trecovered ml-3"> 0</span></h3>
+
+                <h3><span class="font-weight-bold text-danger ">Total Deaths:</span><span class="tdeaths ml-3"> 0</span></h3>
+
+                <h3><span class="font-weight-bold ">Last Update:</span><span class="lupdate ml-3"> 00/00/0000</span></h3>
+
+                <button id="more-details-btn" class="btn btn-primary mt-3 float-right" type="submit">More details</button>
             </div>
         </div>
+    </div>
 
-    <!--covid19 statistical chart-->
-        <div class="col-sm-6 col-md-7 col-lg-8 col-xl-9 covid-chart">
-            <canvas id="myChart" ></canvas> <!--dynamic data-->
-        </div>
-    </div>
-        
-    </div>
+    {{>modal}}
     
-    <script type="module" src="./js/app.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
-    <script type="module" src="./js/covidChart.js"></script>
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/loadCountriesAjax.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>

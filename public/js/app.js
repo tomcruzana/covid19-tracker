@@ -1,4 +1,3 @@
-import { countries } from "./countries.js";
 import { drawChart } from "./covidChart.js";
 
 const search = document.querySelector("input");
@@ -20,6 +19,15 @@ export let chartAxes = {
     yDeathsData : []
 }
 
+//get query string of the current url & pass to the loadData function
+const getQueryString = ( field, url ) => {
+	let href = url ? url : window.location.href;
+	let reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
+	let string = reg.exec(href);
+	return string ? string[1] : null;
+};
+
+//nav search box
 searchCountryBtn.addEventListener("click", async (e)=>{
     e.preventDefault();
 
@@ -32,13 +40,22 @@ searchCountryBtn.addEventListener("click", async (e)=>{
     //TODO: validate country. have the user select from a filtered list
 
     //get data -- case summary of a country
-    await fetch(`/reports?country=${search.value}`)
+    loadData("PH"); //add country code validation as params
+    
+    //empty search input box and toggle focus
+    search.value = "";
+    search.focus();
+});
+
+//get country's cases report
+const loadData = async (countryCode) => {
+    await fetch(`/reports?country=${getQueryString("country")}`)
             .then(response => response.json())
             .then(responseJSON => {
 
                 //show country's case summary
                 const lastUpdate = responseJSON.data.body[responseJSON.data.body.length - 1];
-                countryFlag.src = `https://www.countryflags.io/${countries.UnitedStatesofAmerica}/flat/64.png`; //temp
+                countryFlag.src = `https://www.countryflags.io/${countryCode}/flat/64.png`; //temp
                 countryName.textContent = lastUpdate.country;
                 activeLabel.textContent = lastUpdate.active;
                 confirmedLabel.textContent = lastUpdate.confirmed;
@@ -60,8 +77,6 @@ searchCountryBtn.addEventListener("click", async (e)=>{
                 drawChart();
             })
             .catch(err => alert(err));
-    
-    //empty search input box and toggle focus
-    search.value = "";
-    search.focus();
-});
+};
+
+loadData("PH"); 

@@ -1,0 +1,36 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-default btn-circle global-cases-btn fixed-bottom">
+        <i class="fas fa-globe-americas fa-7x" data-toggle="modal" data-target="#exampleModal"></i>
+</button>
+
+<!-- Modal -->
+<div class="modal fade global-cases-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Global Summary</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!--animated gif-->
+        <img class="covid19-global-main-gif mx-auto d-block" src="./img/global-covid.gif" alt="..." class="rounded">
+
+        <!--modal body-->
+        <h3><span class="modal-cases-text font-weight-bold text-warning ">New Confirmed:</span><span class="gnconfirmed ml-3 text-light"> 0</span></h3>
+        <h3><span class="modal-cases-text font-weight-bold text-warning ">Total Confirmed:</span><span class="gtconfirmed ml-3 text-light"> 0</span></h3>
+
+        <h3><span class="modal-cases-text font-weight-bold text-success ">New Recovered:</span><span class="gnrecovered ml-3 text-light"> 0</span></h3>
+        <h3><span class="modal-cases-text font-weight-bold text-success ">Total Recovered:</span><span class="gtrecovered ml-3 text-light"> 0</span></h3>
+
+        <h3><span class="modal-cases-text font-weight-bold text-danger ">New Deaths:</span><span class="gndeaths ml-3 text-light"> 0</span></h3>
+        <h3><span class="modal-cases-text font-weight-bold text-danger ">Total Deaths:</span><span class="gtdeaths ml-3 text-light"> 0</span></h3>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
