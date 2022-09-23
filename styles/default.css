@@ -11,7 +11,7 @@ body {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   background-color: #d8dce3;
-  font-size: 0.9em;
+  font-size: 1.1em;
 }
 
 /* navbar */
@@ -102,7 +102,7 @@ section {
   text-transform: uppercase;
   font-weight: bold;
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: .5em;
 }
 
 .card-container-subtitle {
