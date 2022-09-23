@@ -1,66 +1,14 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  // to-do
+  // this could speed up the get stats search
+  // find the obj based in the Country property
+  // const country = coutryStats.find(
+  //   (c) => String(c.Slug).trim() == String(newCountryName).trim()
+  // );
+  // console.log(country);
 
-    <link rel="stylesheet" href="/styles/default.css" />
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-
-    <title>Home | Covid Tracker</title>
-
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
-  </head>
-  <body>
-    <!-- navbar start-->
-
-    <!-- search results start -->
-    <form>
-      <input
-        type="text"
-        name="searchbox"
-        placeholder="search a country"
-        value="philippines"
-      />
-      <button id="searchBtn">Search</button>
-    </form>
-    <div class="search-results-container hide">
-      <ul class="search-results-item"></ul>
-    </div>
-    <!-- search results end -->
-    <!-- navbar end-->
-
-    <!-- main start-->
-    <main>
-      <canvas id="myChart" width="400" height="800"></canvas>
-    </main>
-
-    <section>
-      <h2 class="name title">name:</h2>
-      <h3 class="date">date:</h3>
-      <h3 class="continent">continent:</h3>
-      <h3 class="population">population:</h3>
-
-      <h2 class="cases title">cases</h2>
-      <h3 class="cases-new">new:</h3>
-      <h3 class="cases-active">active:</h3>
-      <h3 class="cases-critical">critical:</h3>
-      <h3 class="cases-recovered">recovered:</h3>
-      <h3 class="cases-total">total:</h3>
-
-      <h2 class="deaths title">deaths</h2>
-      <h3 class="deaths-new">new:</h3>
-      <h3 class="deaths-total">total:</h3>
-
-      <h2 class="tests title">tests</h2>
-      <h3 class="tests-total">total:</h3>
-    </section>
-
-    <!-- main end-->
-
-    <!-- footer start-->
-    <!-- footer end-->
-    <script src="/scripts/main.js"></script>
-  </body>
-</html>
+  TODO
+  make keys stats tiled http://preview.themeforest.net/item/quirk-bootstrap-admin-template/full_screen_preview/12189223?_ga=2.221027100.521532525.1663890271-847617848.1661112902
+  test how to update ctx
+  test new apis here https://rapidapi.com/collection/coronavirus-covid-19
+  'new' key statistics data for a country
+  use sumarry api instead to fetch 'new' status & map to chart
