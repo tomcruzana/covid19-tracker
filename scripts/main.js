@@ -20,7 +20,7 @@ const totalRecovered = document.querySelector(".total-recovered");
 
 // covid chart loader
 const covidChartContainer = document.querySelector(".covid-chart-container");
-
+const chartLoaderContainer = document.querySelector(".chart-loader-container");
 /******************************************* global variable**/
 let countriesSlug = [];
 let coutryStats = [];
@@ -29,6 +29,19 @@ let covidCanvas;
 let myChart;
 
 /******************************************* global functions**/
+// counter effect animation
+async function counter(element, start, end) {
+  // ex args class, 0, 1000
+  timer = setInterval(() => {
+    // increment by a thousand otherwise it'll take forever
+    ++start;
+    element.textContent = start;
+    if (start >= end) {
+      clearInterval(timer);
+    }
+  }, 1);
+}
+
 // generate chart
 async function generateChart(lastConfirmed, lastDeaths, lastRecovered) {
   covidCanvas = document.createElement("canvas");
@@ -86,10 +99,12 @@ async function findCountry(countryName) {
       const lastDeaths = deaths[deaths.length - 1].Cases;
       const lastRecovered = recovered[recovered.length - 1].Cases;
 
+      // hide loader
+      chartLoaderContainer.classList.add("hide");
+
       // create covid chart based on the country stats args
       generateChart(lastConfirmed, lastDeaths, lastRecovered);
 
-      
       // hide new statuses since this endpoint don't have these info
       for (const label of newLabels) {
         label.classList.add("hide");
@@ -126,11 +141,16 @@ window.addEventListener("load", (event) => {
       // error handling
       // if a message is detected in the api, exec alert msg
       if (String(summary.Message).length > 0) {
-        alert(summary.Message + ". Please try again later.");
+        Swal.fire({
+          title: "API Error!",
+          text: summary.Message + ". Please try again later.",
+          icon: "error",
+          confirmButtonText: "Refresh",
+        });
         return;
       }
 
-      // show these status
+      // show these status if hidden
       for (const label of newLabels) {
         label.classList.remove("hide");
       }
@@ -146,6 +166,9 @@ window.addEventListener("load", (event) => {
       totalConfirmed.textContent = summary.Global.TotalConfirmed;
       totalDeaths.textContent = summary.Global.TotalDeaths;
       totalRecovered.textContent = summary.Global.TotalRecovered;
+
+      // hide loader
+      chartLoaderContainer.classList.add("hide");
 
       // create covid chart based on the global stats args
       generateChart(
@@ -189,6 +212,9 @@ inputSuggestions.addEventListener("click", function (e) {
   // destory existing covid chart
   covidCanvas.remove();
   myChart.destroy();
+
+  // show loader
+  chartLoaderContainer.classList.remove("hide");
 
   // process input selection
   let country;

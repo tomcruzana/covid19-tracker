@@ -21,6 +21,7 @@
 
 x Dynamacally create chart canvas, onpageload & onclick link
 
-Onclick link, destroy chart
+x Onclick link, destroy chart
 
 Make div and center loader
+handle if server is down. use swal2 with refresh btn
