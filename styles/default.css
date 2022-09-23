@@ -79,19 +79,22 @@ a:hover {
 /* content */
 main {
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-section {
-  max-width: 70vw;
+section{
+  width: 75%;
 }
+
+
 
 .card-container {
   background-color: #fff;
   border-radius: 5px;
   padding: 1em;
   margin: 1em;
-  min-height: 20vh;
-  max-height: 80vh;
+
 }
 
 .card-container-subtitles {
@@ -113,27 +116,6 @@ section {
 }
 
 /* sidebar */
-aside {
-  position: fixed;
-  right: 0px;
-  min-width: 29vw;
-}
-
-.sidebar-title {
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  font-weight: bold;
-  text-transform: capitalize;
-  padding: 1em;
-  margin: 0 1em 0 0;
-  background-color: #2574ab;
-  color: #fff;
-  text-transform: uppercase;
-}
-
-.sidebar-title p {
-  margin: 0;
-}
 
 .sidebar-search {
   margin: 0 1em 0 0;
