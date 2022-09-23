@@ -56,7 +56,7 @@ async function generateChart(lastConfirmed, lastDeaths, lastRecovered) {
       labels: ["Confirmed", "Deaths", "Recovered"],
       datasets: [
         {
-          label: "# of Votes",
+          label: "Covid 19 Records",
           data: [lastConfirmed, lastDeaths, lastRecovered],
           backgroundColor: [
             "rgba(255, 206, 86, 0.2)",

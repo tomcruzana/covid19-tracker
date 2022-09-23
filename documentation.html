@@ -1,0 +1,81 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- font awesome css -->
+    <script
+      src="https://kit.fontawesome.com/e4d4c44ee2.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="/styles/default.css" />
+
+    <!-- loader -->
+    <link rel="stylesheet" href="/styles/loaders.css" />
+
+    <!-- chart js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
+    <title>Documentation | Covid Tracker</title>
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+  </head>
+  <body>
+    <nav>
+        <div class="logo" style="padding-right: 1em">
+          <img src="/assets/favicon-32x32.png" alt="logo" />
+        </div>
+  
+        <div class="sidebar-search">
+          <div class="form-group searchbox">
+            <input type="text" class="input" placeholder="search a country.." />
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </div>
+          <div class="sidebarlinks input-suggestions">
+            <!-- country links goes here -->
+          </div>
+        </div>
+  
+        <div class="navlinks">
+          <a class="navlink" href="./index.html"><i class="fas fa-home"></i> Home</a>
+          <a class="navlink" style="margin-left: 1em" href="/documentation.html"
+            ><i class="fas fa-code"></i> Documentation</a
+          >
+          <a class="navlink" style="margin-left: 1em" href="/about.html"
+            ><i class="fas fa-file"></i> About</a
+          >
+        </div>
+      </nav>
+
+    <main>
+      <section>
+        <div class="card-container">
+          <div class="card-container-labels">
+            <h4 class="card-container-title" style="color: #d9534f">
+              covid 19 statistics
+            </h4>
+            <div class="card-container-subtitles">
+              <p class="card-container-subtitle">
+                <i class="fa-solid fa-location-dot"></i> location:
+                <span class="location">global</span>
+              </p>
+              <p class="card-container-subtitle">
+                <i class="fa-solid fa-earth-americas"></i>
+                country code: <span class="slug">n/a</span>
+              </p>
+              <p class="card-container-subtitle">
+                <i class="fa-regular fa-calendar"></i> last updated:
+                <span class="last-updated">?</span>
+              </p>
+            </div>
+          </div>
+      </section>
+    </main>
+
+    <script src="/scripts/main.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>
