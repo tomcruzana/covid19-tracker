@@ -133,9 +133,9 @@ window.addEventListener("load", (event) => {
       if (String(summary.Message).length > 0) {
         Swal.fire({
           title: "API Error!",
-          text: summary.Message + ". Please try again later.",
+          text: summary.Message + ". Please try refreshing the page again later.",
           icon: "error",
-          confirmButtonText: "Refresh",
+          confirmButtonText: "Ok",
         });
         return;
       }
