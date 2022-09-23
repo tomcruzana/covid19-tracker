@@ -4,41 +4,85 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
+    <!-- font awesome css -->
+    <script
+      src="https://kit.fontawesome.com/e4d4c44ee2.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="/styles/default.css" />
+
+    <!-- chart js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
     <title>Home | Covid Tracker</title>
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
   </head>
   <body>
-    <!-- navbar start-->
-    <!-- navbar end-->
-
-    <!-- main start-->
-    <main>
-      <div id="myDiv" style="border: 1px solid black">
-        <!-- Plotly chart will be drawn inside this DIV -->
+    <nav>
+      <div class="navlinks">
+        <a class="navlink" href="">Home</a>
+        <a class="navlink" style="margin-left: 1em" href="">About</a>
+        <a class="navlink" style="margin-left: 1em" href="">Home</a>
       </div>
+    </nav>
 
-      <h2 class="name title">name:</h2>
-      <h3 class="continent">continent:</h3>
-      <h3 class="population">population:</h3>
+    <main>
+      <!-- navbar start -->
+      <aside>
+        <div class="sidebar-title">
+          <p>countries</p>
+        </div>
 
-      <h2 class="cases title">cases</h2>
-      <h3 class="cases-new">new:</h3>
-      <h3 class="cases-active">active:</h3>
-      <h3 class="cases-critical">critical:</h3>
-      <h3 class="cases-recovered">recovered:</h3>
-      <h3 class="cases-total">total:</h3>
+        <div class="sidebar-search">
+          <div class="form-group searchbox">
+            <input type="text" class="input" placeholder="search a country.." />
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
 
-      <h2 class="deaths title">deaths</h2>
-      <h3 class="deaths-new">new:</h3>
-      <h3 class="deaths-total">total:</h3>
+        <div class="sidebarlinks input-suggestions">
+          <!-- country links goes here -->
+        </div>
+      </aside>
+      <!-- navbar end -->
 
-      <h2 class="tests title">tests</h2>
-      <h3 class="tests-total">total:</h3>
+      <section>
+        <div class="card-container">
+          <div class="card-container-labels">
+            <h4 class="card-container-title" style="color: #d9534f">
+              covid 19 statistics
+            </h4>
+            <div class="card-container-subtitles">
+              <p class="card-container-subtitle">
+                <i class="fa-solid fa-location-dot"></i> location:
+                <span class="location">global</span>
+              </p>
+              <p class="card-container-subtitle">
+                <i class="fa-solid fa-earth-americas"></i>
+                country code: <span class="slug">n/a</span>
+              </p>
+              <p class="card-container-subtitle">
+                <i class="fa-regular fa-calendar"></i> last updated: 2022-02-08
+              </p>
+            </div>
+          </div>
+          <canvas id="myChart"></canvas>
+        </div>
+
+        <div class="card-container">
+          <div class="card-container-labels">
+            <h4 class="card-container-title" style="color: #259db3">
+              key statistics
+            </h4>
+          </div>
+        </div>
+      </section>
     </main>
-    <!-- main end-->
 
-    <!-- footer start-->
-    <!-- footer end-->
     <script src="/scripts/main.js"></script>
+    <script src="/scripts/graph.js"></script>
   </body>
 </html>

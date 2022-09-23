@@ -1,158 +1,61 @@
-// https://rapidapi.com/api-sports/api/covid-193/
+// https://documenter.getpostman.com/view/10808728/SzS8rjbc#intro
+// https://api.covid19api.com/dayone/country/philippines
+// https://codepen.io/kristen17/pen/PoemNzM
 
-// dom selector
-const cname = document.querySelector(".name");
-const population = document.querySelector(".population");
+/******************************************* dom selectors **/
+const countrylinks = document.querySelector(".sidebarlinks");
+const input = document.querySelector(".input");
+const inputSuggestions = document.querySelector(".input-suggestions");
 
-const cases = document.querySelector(".cases");
-const casesNew = document.querySelector(".cases-new");
-const casesActive = document.querySelector(".cases-active");
-const casesCritical = document.querySelector(".cases-critical");
-const casesRecovered = document.querySelector(".cases-recovered");
-const casesTotal = document.querySelector(".cases-total");
+/******************************************* global variable**/
+let countries = [];
 
-const deaths = document.querySelector(".deaths");
-const deathsNew = document.querySelector(".deaths-new");
-const deathsTotal = document.querySelector(".deaths-total");
+/******************************************* events listeners**/
+window.addEventListener("load", (event) => {
+  getStatistics(options)
+    .then((response) => {
+      response.forEach((e) => {
+        console.log(e.Country);
+        countries.push(String(e.Country).toLowerCase());
+      });
+    })
+    .catch((err) => console.error(err));
+});
 
-const tests = document.querySelector(".tests");
-const testsTotal = document.querySelector(".tests-total");
+input.addEventListener("input", (e) => {
+  let filteredProducts;
+  let query = "";
 
-// country object
-// this is where we map the data from the api
-let country = {
-  name: "",
-  continent: "",
-  population: "",
-  cases: { new: "", active: "", critical: "", recovered: "", total: "" },
-  deaths: { new: "", total: "" },
-  tests: { total: "" },
-};
+  // clear result-set each changes to avoid duplication
+  inputSuggestions.innerHTML = "";
 
-let trace1 = {
-  x: ["2020-10-04", "2021-11-04", "2023-12-04"],
-  y: [90, 40, 60],
-  type: "scatter",
-  name: "asdasd123",
-};
+  // assign search input box value
+  query = String(input.value).toLowerCase();
 
-let trace2 = {
-  x: ["2020-10-04", "2021-11-04", "2023-12-04"],
-  y: [100, 60, 80],
-  type: "scatter",
-  name: "asdasd22",
-};
+  // filter relevant data as per search query
+  filteredProducts = countries.filter((q) => q.startsWith(query));
 
-let trace3 = {
-  x: ["2020-10-04", "2021-11-04", "2023-12-04"],
-  y: [200, 100, 30],
-  type: "scatter",
-  name: "asdasd33",
-};
+  // show result-set
+  filteredProducts.forEach(
+    (e) =>
+      (inputSuggestions.innerHTML += `<div class="link"><h5>${e}</h5></div>`)
+  );
 
-let data = [trace1, trace2, trace3];
+  // clear result-set if searchbox is empty
+  if (input.value.length === 0) inputSuggestions.innerHTML = "";
+});
 
-let layout = {
-  title: "Covid 19 Data",
-  showlegend: true,
-};
+/******************************************* http requests **/
 
-let config = {
-  responsive: true,
-  displaylogo: false,
-  modeBarButtonsToRemove: [
-    "toImage",
-    "lasso2d",
-    "select",
-    "zoom",
-    "autoScale",
-    "resetScale",
-  ],
-};
-
-Plotly.newPlot("myDiv", data, layout, config);
-
-// http requests
+// configuration options
 const options = {
   method: "GET",
-  headers: {
-    "X-RapidAPI-Key": "6b85ac3dc4msh0272b28a2fa5cbap179e8cjsnce4a1722e040",
-    "X-RapidAPI-Host": "covid-193.p.rapidapi.com",
-  },
 };
 
-// get countries
-fetch("https://covid-193.p.rapidapi.com/countries", options)
-  .then((data) => data.json())
-  .then((json) => {
-    console.log(json.response);
-  })
-  .catch((err) => console.error(err));
-
 // get statistics
-country.name = "usa";
+async function getStatistics(options) {
+  const response = await fetch(`https://api.covid19api.com/countries`, options);
+  const countries = await response.json();
 
-fetch(
-  `https://covid-193.p.rapidapi.com/statistics?country=${country.name}`,
-  options
-)
-  .then((response) => response.json())
-  .then((json) => {
-    // country details, cases, death, tests
-    const res = json.response[0];
-    country.name = json.parameters.country;
-    country.continent = res.continent;
-    country.population = res.population;
-
-    country.cases.new = res.cases.new;
-    country.cases.active = res.cases.active;
-    country.cases.critical = res.cases.critical;
-    country.cases.recovered = res.cases.recovered;
-    country.cases.total = res.cases.total;
-
-    country.deaths.new = res.deaths.new;
-    country.deaths.total = res.deaths.total;
-
-    country.tests.total = res.tests.total;
-
-    //to-do : refactor make async await
-    cname.textContent = country.name;
-    population.textContent = country.population;
-    casesNew.textContent = country.cases.new;
-    casesActive.textContent = country.cases.active;
-    casesCritical.textContent = country.cases.critical;
-    casesRecovered.textContent = country.cases.recovered;
-    casesTotal.textContent = country.cases.total;
-    deathsNew.textContent = country.deaths.new;
-    deathsTotal.textContent = country.deaths.total;
-    testsTotal.textContent = country.tests.total;
-  })
-  .catch((err) => console.error(err));
-
-// get history
-fetch(
-  `https://covid-193.p.rapidapi.com/history?country=${country.name}`,
-  options
-)
-  .then((response) => response.json())
-  .then((json) => {
-    console.log(json);
-    // country details, cases, death, tests
-    console.log(`
-          ${json.parameters.country}
-          ${json.response[0].continent}
-          ${json.response[0].population}
-  
-          ${json.response[0].cases.new}
-          ${json.response[0].cases.active}
-          ${json.response[0].cases.critical}
-          ${json.response[0].cases.recovered}
-          ${json.response[0].cases.total}
-  
-          ${json.response[0].deaths.new}
-          ${json.response[0].deaths.total}
-  
-          ${json.response[0].tests.total}
-      `);
-  })
-  .catch((err) => console.error(err));
+  return countries;
+}
