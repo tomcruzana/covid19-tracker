@@ -40,7 +40,9 @@
       </div>
 
       <div class="navlinks">
-        <a class="navlink" href="./index.html"><i class="fas fa-home"></i> Home</a>
+        <a class="navlink" href="./index.html"
+          ><i class="fas fa-home"></i> Home</a
+        >
         <a class="navlink" style="margin-left: 1em" href="/documentation.html"
           ><i class="fas fa-code"></i> Documentation</a
         >
@@ -76,50 +78,67 @@
           <!-- chart goes here -->
           <div class="covid-chart-container">
             <!-- <canvas id="myChart"></canvas> -->
-            <div class="chart-loader-container"><span class="loader"></span></div>
-        </div>
-
-        <div class="card-container">
-          <div class="card-container-labels">
-            <h4 class="card-container-title" style="color: #259db3">
-              key statistics
-            </h4>
+            <div class="chart-loader-container">
+              <span class="loader"></span>
+            </div>
           </div>
 
-          <div class="card-container-keystatistics-subtitles">
-            <p class="card-container-statistic new-label">
-              <i class="fa-solid fa-virus"></i> new confirmed:
-              <span class="new-confirmed"><span class="loader"></span></span>
-            </p>
-            <p class="card-container-statistic new-label">
-              <i class="fa-solid fa-skull-crossbones"></i>
-              new deaths:
-              <span class="new-deaths"><span class="loader"></span></span>
-            </p>
-            <p class="card-container-statistic new-label">
-              <i class="fa-solid fa-briefcase-medical"></i> new recovered:
-              <span class="new-recovered"><span class="loader"></span></span>
-            </p>
-          </div>
+          <div class="card-container">
+            <div class="card-container-labels">
+              <h4 class="card-container-title" style="color: #259db3">
+                key statistics
+              </h4>
+            </div>
 
-          <div class="card-container-keystatistics-subtitles">
-            <p class="card-container-statistic">
-              <i class="fa-solid fa-virus"></i> total confirmed:
-              <span class="total-confirmed"><span class="loader"></span></span>
-            </p>
-            <p class="card-container-statistic">
-              <i class="fa-solid fa-skull-crossbones"></i>
-              total deaths:
-              <span class="total-deaths"><span class="loader"></span></span>
-            </p>
-            <p class="card-container-statistic">
-              <i class="fa-solid fa-briefcase-medical"></i> total recovered:
-              <span class="total-recovered"><span class="loader"></span></span>
-            </p>
+            <div class="card-container-keystatistics-subtitles">
+              <p class="card-container-statistic new-label">
+                <i class="fa-solid fa-virus"></i> new confirmed:
+                <span class="new-confirmed"><span class="loader"></span></span>
+              </p>
+              <p class="card-container-statistic new-label">
+                <i class="fa-solid fa-skull-crossbones"></i>
+                new deaths:
+                <span class="new-deaths"><span class="loader"></span></span>
+              </p>
+              <p class="card-container-statistic new-label">
+                <i class="fa-solid fa-briefcase-medical"></i> new recovered:
+                <span class="new-recovered"><span class="loader"></span></span>
+              </p>
+            </div>
+
+            <div class="card-container-keystatistics-subtitles">
+              <p class="card-container-statistic">
+                <i class="fa-solid fa-virus"></i> total confirmed:
+                <span class="total-confirmed"
+                  ><span class="loader"></span
+                ></span>
+              </p>
+              <p class="card-container-statistic">
+                <i class="fa-solid fa-skull-crossbones"></i>
+                total deaths:
+                <span class="total-deaths"><span class="loader"></span></span>
+              </p>
+              <p class="card-container-statistic">
+                <i class="fa-solid fa-briefcase-medical"></i> total recovered:
+                <span class="total-recovered"
+                  ><span class="loader"></span
+                ></span>
+              </p>
+            </div>
           </div>
         </div>
       </section>
     </main>
+
+    <footer>
+      <div>
+        <a href="https://github.com/tomcruzana" target="_blank"
+          ><h5>
+            <i class="fa-brands fa-github"></i> Developed by - Thomas Cruzana
+          </h5></a
+        >
+      </div>
+    </footer>
 
     <script src="/scripts/main.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

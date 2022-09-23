@@ -163,3 +163,11 @@ section {
   height: 60vh;
   background-color: #9fa8bc;
 }
+
+/* footer */
+footer {
+  background-color: #262b36 !important;
+  color: #9fa8bc;
+  margin-top: 4em;
+  padding: 1em 2em;
+}

@@ -97,13 +97,15 @@ async function findCountry(countryName) {
       // update status values
       totalConfirmed.textContent = lastConfirmed;
       totalDeaths.textContent = lastDeaths;
-      totalRecovered.textContent = lastRecovered + lastConfirmed / 1.5; // fake data
+      totalRecovered.textContent = Math.round(
+        lastRecovered + lastConfirmed / 1.5
+      ); // fake data
 
       // create covid chart based on the country stats args
       generateChart(
         lastConfirmed,
         lastDeaths,
-        lastRecovered + lastConfirmed / 1.5 // fake data
+        Math.round(lastRecovered + lastConfirmed / 1.5) // fake data
       );
     })
     .catch((err) => console.error(err));
@@ -160,7 +162,9 @@ window.addEventListener("load", (event) => {
 
       // totalRecovered.textContent = summary.Global.TotalRecovered;
       // test fake data
-      totalRecovered.textContent = summary.Global.TotalConfirmed / 1.5;
+      totalRecovered.textContent = Math.round(
+        summary.Global.TotalConfirmed / 1.5
+      );
 
       // hide loader
       chartLoaderContainer.classList.add("hide");
@@ -169,7 +173,7 @@ window.addEventListener("load", (event) => {
       generateChart(
         summary.Global.TotalConfirmed,
         summary.Global.TotalDeaths,
-        summary.Global.TotalConfirmed / 1.5 //fake data
+        Math.round(summary.Global.TotalConfirmed / 1.5) //fake data
       );
     })
     .catch((err) => console.error(err));

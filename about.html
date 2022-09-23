@@ -25,55 +25,102 @@
   </head>
   <body>
     <nav>
-        <div class="logo" style="padding-right: 1em">
-          <img src="/assets/favicon-32x32.png" alt="logo" />
+      <div class="logo" style="padding-right: 1em">
+        <img src="/assets/favicon-32x32.png" alt="logo" />
+      </div>
+
+      <div class="sidebar-search">
+        <div class="form-group searchbox">
+          <input type="text" class="input" placeholder="search a country.." />
+          <button type="submit"><i class="fa fa-search"></i></button>
         </div>
-  
-        <div class="sidebar-search">
-          <div class="form-group searchbox">
-            <input type="text" class="input" placeholder="search a country.." />
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </div>
-          <div class="sidebarlinks input-suggestions">
-            <!-- country links goes here -->
-          </div>
+        <div class="sidebarlinks input-suggestions">
+          <!-- country links goes here -->
         </div>
-  
-        <div class="navlinks">
-          <a class="navlink" href="./index.html"><i class="fas fa-home"></i> Home</a>
-          <a class="navlink" style="margin-left: 1em" href="/documentation.html"
-            ><i class="fas fa-code"></i> Documentation</a
-          >
-          <a class="navlink" style="margin-left: 1em" href="/about.html"
-            ><i class="fas fa-file"></i> About</a
-          >
-        </div>
-      </nav>
+      </div>
+
+      <div class="navlinks">
+        <a class="navlink" href="./index.html"
+          ><i class="fas fa-home"></i> Home</a
+        >
+        <a class="navlink" style="margin-left: 1em" href="/documentation.html"
+          ><i class="fas fa-code"></i> Documentation</a
+        >
+        <a class="navlink" style="margin-left: 1em" href="/about.html"
+          ><i class="fas fa-file"></i> About</a
+        >
+      </div>
+    </nav>
 
     <main>
       <section>
         <div class="card-container">
-          <div class="card-container-labels">
+          <img
+            style="
+              margin-bottom: 2em;
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+              width: 50%;
+            "
+            src="http://placekitten.com/256/256"
+            alt="cat"
+          />
+          <div
+            class="card-container-labels"
+            style="font-size: 1.3em !important"
+          >
             <h4 class="card-container-title" style="color: #d9534f">
-              covid 19 statistics
+              covid 19 tracker app
             </h4>
-            <div class="card-container-subtitles">
-              <p class="card-container-subtitle">
-                <i class="fa-solid fa-location-dot"></i> location:
-                <span class="location">global</span>
+            <div>
+              <p>
+                <strong
+                  >a simple Coronavirus (COVID-19) tracking system for all
+                  countries.</strong
+                >
               </p>
-              <p class="card-container-subtitle">
-                <i class="fa-solid fa-earth-americas"></i>
-                country code: <span class="slug">n/a</span>
+              <p>
+                <strong>Installation:</strong>
               </p>
-              <p class="card-container-subtitle">
-                <i class="fa-regular fa-calendar"></i> last updated:
-                <span class="last-updated">?</span>
+              <pre style="border: 1px solid black; background-color: cadetblue">
+                <code>
+  git init
+  git pull https://github.com/tomcruzana/covid19-tracker.git
+                </code>
+              </pre>
+              <p>
+                <strong>Technology used:</strong>
               </p>
+              <ul>
+                <li>
+                  Frontend - HTML5, CSS3, JavaScript, SweetAlert2, Chart.js
+                </li>
+                <li>REST APIs - covid19api</li>
+              </ul>
+              <p>
+                <strong>License:</strong>
+              </p>
+              <a
+                style="color: cadetblue"
+                href="https://choosealicense.com/licenses/mit/"
+                ><p>MIT</p></a
+              >
             </div>
           </div>
+        </div>
       </section>
     </main>
+
+    <footer>
+      <div>
+        <a href="https://github.com/tomcruzana" target="_blank"
+          ><h5>
+            <i class="fa-brands fa-github"></i> Developed by - Thomas Cruzana
+          </h5></a
+        >
+      </div>
+    </footer>
 
     <script src="/scripts/main.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
