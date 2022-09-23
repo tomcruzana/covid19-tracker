@@ -83,18 +83,15 @@ main {
   justify-content: center;
 }
 
-section{
+section {
   width: 75%;
 }
-
-
 
 .card-container {
   background-color: #fff;
   border-radius: 5px;
   padding: 1em;
   margin: 1em;
-
 }
 
 .card-container-subtitles {
@@ -122,12 +119,19 @@ section{
 }
 
 .sidebarlinks {
+  position: absolute;
+  top: 50px;
+  left: 70px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   background-color: #fff;
   margin: 0 1em 1em 0em;
   overflow-y: scroll;
   max-height: 30vh;
+  min-width: 250px;
+  box-shadow: 5px 6px 6px -4px rgba(89, 80, 80, 0.83);
+  -webkit-box-shadow: 5px 6px 6px -4px rgba(89, 80, 80, 0.83);
+  -moz-box-shadow: 5px 6px 6px -4px rgba(89, 80, 80, 0.83);
 }
 
 .link {
