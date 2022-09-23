@@ -11,7 +11,7 @@ body {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   background-color: #d8dce3;
-  font-size: 1.1em;
+  font-size: 0.8em;
 }
 
 /* navbar */
@@ -29,16 +29,16 @@ nav {
 .searchbox {
   position: relative;
   width: auto;
-  padding-bottom: 1em;
-  border-bottom: 1px solid #9fa8bc;
 }
 
 .searchbox input {
+  border: 1px solid #cccccc;
   border-radius: 5px;
   width: 100%;
-  background-color: #fff;
+  background-color: #3b4354;
   padding: 10px 60px 10px 20px;
   display: block;
+  color: #9fa8bc;
 }
 
 ::placeholder {
@@ -102,7 +102,7 @@ section {
   text-transform: uppercase;
   font-weight: bold;
   margin-top: 0;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 .card-container-subtitle {
@@ -136,9 +136,7 @@ aside {
 }
 
 .sidebar-search {
-  padding: 1em;
   margin: 0 1em 0 0;
-  background-color: #fff;
 }
 
 .sidebarlinks {

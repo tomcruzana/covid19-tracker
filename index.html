@@ -25,10 +25,22 @@
       <div class="logo" style="padding-right: 1em">
         <img src="/assets/favicon-32x32.png" alt="logo" />
       </div>
+      
+      <div class="sidebar-search">
+        <div class="form-group searchbox">
+          <input type="text" class="input" placeholder="search a country.." />
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+
+      <!-- <div class="sidebarlinks input-suggestions"> -->
+        <!-- country links goes here -->
+      <!-- </div> -->
+
       <div class="navlinks">
-        <a class="navlink" href="">Home</a>
-        <a class="navlink" style="margin-left: 1em" href="">Documentation</a>
-        <a class="navlink" style="margin-left: 1em" href="">About</a>
+        <a class="navlink" href=""><i class="fas fa-home"></i> Home</a>
+        <a class="navlink" style="margin-left: 1em" href=""><i class="fas fa-code"></i> Documentation</a>
+        <a class="navlink" style="margin-left: 1em" href=""><i class="fas fa-file"></i> About</a>
       </div>
     </nav>
 
@@ -37,17 +49,6 @@
       <aside>
         <div class="sidebar-title">
           <p>countries</p>
-        </div>
-
-        <div class="sidebar-search">
-          <div class="form-group searchbox">
-            <input type="text" class="input" placeholder="search a country.." />
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </div>
-        </div>
-
-        <div class="sidebarlinks input-suggestions">
-          <!-- country links goes here -->
         </div>
       </aside>
       <!-- navbar end -->
@@ -68,7 +69,8 @@
                 country code: <span class="slug">n/a</span>
               </p>
               <p class="card-container-subtitle">
-                <i class="fa-regular fa-calendar"></i> last updated: <span class="last-updated">?</span>
+                <i class="fa-regular fa-calendar"></i> last updated:
+                <span class="last-updated">?</span>
               </p>
             </div>
           </div>
@@ -92,7 +94,7 @@
               new deaths: <span class="new-deaths">?</span>
             </p>
             <p class="card-container-statistic">
-              <i class="fa-solid fa-briefcase-medical"></i> new recovered: 
+              <i class="fa-solid fa-briefcase-medical"></i> new recovered:
               <span class="new-recovered">?</span>
             </p>
           </div>
@@ -107,16 +109,15 @@
               total deaths: <span class="total-deaths">?</span>
             </p>
             <p class="card-container-statistic">
-              <i class="fa-solid fa-briefcase-medical"></i> total recovered: 
+              <i class="fa-solid fa-briefcase-medical"></i> total recovered:
               <span class="total-recovered">?</span>
             </p>
           </div>
         </div>
-        </div>
       </section>
     </main>
 
-    <script src="/scripts/main.js"></script>
+    <!-- <script src="/scripts/main.js"></script> -->
     <script src="/scripts/graph.js"></script>
   </body>
 </html>
