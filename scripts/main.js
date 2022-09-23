@@ -1,14 +1,10 @@
-// https://documenter.getpostman.com/view/10808728/SzS8rjbc#intro
-// https://api.covid19api.com/dayone/country/philippines
-// https://codepen.io/kristen17/pen/PoemNzM
-
 /******************************************* dom selectors **/
 // sidebar
 const countrylinks = document.querySelector(".sidebarlinks");
 const input = document.querySelector(".input");
 const inputSuggestions = document.querySelector(".input-suggestions");
 
-//ket statistics
+//key statistics
 const newLabels = document.querySelectorAll(".new-label");
 const lastUpdated = document.querySelector(".last-updated");
 const newConfirmed = document.querySelector(".new-confirmed");
@@ -21,6 +17,7 @@ const totalRecovered = document.querySelector(".total-recovered");
 // covid chart loader
 const covidChartContainer = document.querySelector(".covid-chart-container");
 const chartLoaderContainer = document.querySelector(".chart-loader-container");
+
 /******************************************* global variable**/
 let countriesSlug = [];
 let coutryStats = [];
@@ -29,19 +26,6 @@ let covidCanvas;
 let myChart;
 
 /******************************************* global functions**/
-// counter effect animation
-async function counter(element, start, end) {
-  // ex args class, 0, 1000
-  timer = setInterval(() => {
-    // increment by a thousand otherwise it'll take forever
-    ++start;
-    element.textContent = start;
-    if (start >= end) {
-      clearInterval(timer);
-    }
-  }, 1);
-}
-
 // generate chart
 async function generateChart(lastConfirmed, lastDeaths, lastRecovered) {
   covidCanvas = document.createElement("canvas");
@@ -102,9 +86,6 @@ async function findCountry(countryName) {
       // hide loader
       chartLoaderContainer.classList.add("hide");
 
-      // create covid chart based on the country stats args
-      generateChart(lastConfirmed, lastDeaths, lastRecovered);
-
       // hide new statuses since this endpoint don't have these info
       for (const label of newLabels) {
         label.classList.add("hide");
@@ -116,7 +97,14 @@ async function findCountry(countryName) {
       // update status values
       totalConfirmed.textContent = lastConfirmed;
       totalDeaths.textContent = lastDeaths;
-      totalRecovered.textContent = lastRecovered;
+      totalRecovered.textContent = lastRecovered + lastConfirmed / 1.5; // fake data
+
+      // create covid chart based on the country stats args
+      generateChart(
+        lastConfirmed,
+        lastDeaths,
+        lastRecovered + lastConfirmed / 1.5 // fake data
+      );
     })
     .catch((err) => console.error(err));
 }
@@ -162,10 +150,17 @@ window.addEventListener("load", (event) => {
       lastUpdated.textContent = String(summary.Global.Date).substring(0, 10);
       newConfirmed.textContent = summary.Global.NewConfirmed;
       newDeaths.textContent = summary.Global.NewDeaths;
-      newRecovered.textContent = summary.Global.NewRecovered;
+
+      // newRecovered.textContent = summary.Global.NewRecovered;
+      // test fake data
+      newRecovered.textContent = summary.Global.NewConfirmed * 2;
+
       totalConfirmed.textContent = summary.Global.TotalConfirmed;
       totalDeaths.textContent = summary.Global.TotalDeaths;
-      totalRecovered.textContent = summary.Global.TotalRecovered;
+
+      // totalRecovered.textContent = summary.Global.TotalRecovered;
+      // test fake data
+      totalRecovered.textContent = summary.Global.TotalConfirmed / 1.5;
 
       // hide loader
       chartLoaderContainer.classList.add("hide");
@@ -174,7 +169,7 @@ window.addEventListener("load", (event) => {
       generateChart(
         summary.Global.TotalConfirmed,
         summary.Global.TotalDeaths,
-        summary.Global.TotalRecovered
+        summary.Global.TotalConfirmed / 1.5 //fake data
       );
     })
     .catch((err) => console.error(err));
