@@ -5,6 +5,7 @@ const input = document.querySelector(".input");
 const inputSuggestions = document.querySelector(".input-suggestions");
 
 //key statistics
+const locationName = document.querySelector(".locationName");
 const newLabels = document.querySelectorAll(".new-label");
 const lastUpdated = document.querySelector(".last-updated");
 const newConfirmed = document.querySelector(".new-confirmed");
@@ -95,6 +96,7 @@ async function findCountry(countryName) {
       newRecovered.classList.add("hide");
 
       // update status values
+      locationName.textContent = countryName;
       totalConfirmed.textContent = lastConfirmed;
       totalDeaths.textContent = lastDeaths;
       totalRecovered.textContent = Math.round(
@@ -133,7 +135,8 @@ window.addEventListener("load", (event) => {
       if (String(summary.Message).length > 0) {
         Swal.fire({
           title: "API Error!",
-          text: summary.Message + ". Please try refreshing the page again later.",
+          text:
+            summary.Message + ". Please try refreshing the page again later.",
           icon: "error",
           confirmButtonText: "Ok",
         });
