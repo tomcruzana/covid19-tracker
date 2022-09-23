@@ -12,3 +12,15 @@
   test new apis here https://rapidapi.com/collection/coronavirus-covid-19
   'new' key statistics data for a country
   use sumarry api instead to fetch 'new' status & map to chart
+
+  TODO
+  loading css
+  incrementing effect
+
+
+
+x Dynamacally create chart canvas, onpageload & onclick link
+
+Onclick link, destroy chart
+
+Make div and center loader

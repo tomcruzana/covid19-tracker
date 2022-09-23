@@ -9,6 +9,7 @@ const input = document.querySelector(".input");
 const inputSuggestions = document.querySelector(".input-suggestions");
 
 //ket statistics
+const newLabels = document.querySelectorAll(".new-label");
 const lastUpdated = document.querySelector(".last-updated");
 const newConfirmed = document.querySelector(".new-confirmed");
 const newDeaths = document.querySelector(".new-deaths");
@@ -17,15 +18,66 @@ const totalConfirmed = document.querySelector(".total-confirmed");
 const totalDeaths = document.querySelector(".total-deaths");
 const totalRecovered = document.querySelector(".total-recovered");
 
+// covid chart loader
+const covidChartContainer = document.querySelector(".covid-chart-container");
+
 /******************************************* global variable**/
 let countriesSlug = [];
 let coutryStats = [];
+let isChartGenerated = false;
+let covidCanvas;
+let myChart;
 
 /******************************************* global functions**/
+// generate chart
+async function generateChart(lastConfirmed, lastDeaths, lastRecovered) {
+  covidCanvas = document.createElement("canvas");
+  covidCanvas.setAttribute("id", "myChart");
+  covidChartContainer.appendChild(covidCanvas);
+
+  const ctx = document.getElementById("myChart");
+
+  myChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Confirmed", "Deaths", "Recovered"],
+      datasets: [
+        {
+          label: "# of Votes",
+          data: [lastConfirmed, lastDeaths, lastRecovered],
+          backgroundColor: [
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+          ],
+          borderColor: [
+            "rgba(255, 206, 86, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(75, 192, 192, 1)",
+          ],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+
+  isChartGenerated = true;
+}
+
+// find country input
 async function findCountry(countryName) {
   console.log("Log: findCountry executed");
   getStatusStatistics(countryName, options)
     .then((response) => {
+      console.log("log: " + response);
+
       // get the last case from the status arrays
       const confirmed = response.confirmed;
       const deaths = response.deaths;
@@ -34,39 +86,22 @@ async function findCountry(countryName) {
       const lastDeaths = deaths[deaths.length - 1].Cases;
       const lastRecovered = recovered[recovered.length - 1].Cases;
 
-      // chart js
-      const ctx = document.getElementById("myChart");
+      // create covid chart based on the country stats args
+      generateChart(lastConfirmed, lastDeaths, lastRecovered);
 
-      const myChart = new Chart(ctx, {
-        type: "bar",
-        data: {
-          labels: ["Confirmed", "Deaths", "Recovered"],
-          datasets: [
-            {
-              label: "# of Votes",
-              data: [lastConfirmed, lastDeaths, lastRecovered],
-              backgroundColor: [
-                "rgba(255, 206, 86, 0.2)",
-                "rgba(255, 99, 132, 0.2)",
-                "rgba(75, 192, 192, 0.2)",
-              ],
-              borderColor: [
-                "rgba(255, 206, 86, 1)",
-                "rgba(255, 99, 132, 1)",
-                "rgba(75, 192, 192, 1)",
-              ],
-              borderWidth: 1,
-            },
-          ],
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true,
-            },
-          },
-        },
-      });
+      
+      // hide new statuses since this endpoint don't have these info
+      for (const label of newLabels) {
+        label.classList.add("hide");
+      }
+      newConfirmed.classList.add("hide");
+      newDeaths.classList.add("hide");
+      newRecovered.classList.add("hide");
+
+      // update status values
+      totalConfirmed.textContent = lastConfirmed;
+      totalDeaths.textContent = lastDeaths;
+      totalRecovered.textContent = lastRecovered;
     })
     .catch((err) => console.error(err));
 }
@@ -95,6 +130,15 @@ window.addEventListener("load", (event) => {
         return;
       }
 
+      // show these status
+      for (const label of newLabels) {
+        label.classList.remove("hide");
+      }
+      newConfirmed.classList.remove("hide");
+      newDeaths.classList.remove("hide");
+      newRecovered.classList.remove("hide");
+
+      // update status values
       lastUpdated.textContent = String(summary.Global.Date).substring(0, 10);
       newConfirmed.textContent = summary.Global.NewConfirmed;
       newDeaths.textContent = summary.Global.NewDeaths;
@@ -102,6 +146,13 @@ window.addEventListener("load", (event) => {
       totalConfirmed.textContent = summary.Global.TotalConfirmed;
       totalDeaths.textContent = summary.Global.TotalDeaths;
       totalRecovered.textContent = summary.Global.TotalRecovered;
+
+      // create covid chart based on the global stats args
+      generateChart(
+        summary.Global.TotalConfirmed,
+        summary.Global.TotalDeaths,
+        summary.Global.TotalRecovered
+      );
     })
     .catch((err) => console.error(err));
 });
@@ -134,6 +185,12 @@ input.addEventListener("input", (e) => {
 // assign target to input value
 // & load statistics to chart nad key stats
 inputSuggestions.addEventListener("click", function (e) {
+  // delete canvas covid chart element
+  // destory existing covid chart
+  covidCanvas.remove();
+  myChart.destroy();
+
+  // process input selection
   let country;
   if (e.target.tagName === "DIV") {
     // remove the tags if a div is clicked
@@ -145,6 +202,9 @@ inputSuggestions.addEventListener("click", function (e) {
     input.value = e.target.innerHTML;
     findCountry(input.value);
   }
+
+  // clear the suggestions
+  inputSuggestions.innerHTML = "";
 });
 
 /******************************************* http requests **/

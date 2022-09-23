@@ -13,6 +13,9 @@
     <!-- custom css -->
     <link rel="stylesheet" href="/styles/default.css" />
 
+    <!-- loader -->
+    <link rel="stylesheet" href="/styles/loaders.css" />
+
     <!-- chart js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 
@@ -33,7 +36,6 @@
         </div>
         <div class="sidebarlinks input-suggestions">
           <!-- country links goes here -->
-
         </div>
       </div>
 
@@ -70,7 +72,11 @@
               </p>
             </div>
           </div>
-          <canvas id="myChart"></canvas>
+
+          <!-- chart goes here -->
+          <div class="covid-chart-container">
+            <!-- <canvas id="myChart"></canvas> -->
+   
         </div>
 
         <div class="card-container">
@@ -81,32 +87,34 @@
           </div>
 
           <div class="card-container-keystatistics-subtitles">
-            <p class="card-container-statistic">
+            <p class="card-container-statistic new-label">
               <i class="fa-solid fa-virus"></i> new confirmed:
-              <span class="new-confirmed">?</span>
+              <span class="new-confirmed"><span class="loader"></span></span>
             </p>
-            <p class="card-container-statistic">
+            <p class="card-container-statistic new-label">
               <i class="fa-solid fa-skull-crossbones"></i>
-              new deaths: <span class="new-deaths">?</span>
+              new deaths:
+              <span class="new-deaths"><span class="loader"></span></span>
             </p>
-            <p class="card-container-statistic">
+            <p class="card-container-statistic new-label">
               <i class="fa-solid fa-briefcase-medical"></i> new recovered:
-              <span class="new-recovered">?</span>
+              <span class="new-recovered"><span class="loader"></span></span>
             </p>
           </div>
 
           <div class="card-container-keystatistics-subtitles">
             <p class="card-container-statistic">
               <i class="fa-solid fa-virus"></i> total confirmed:
-              <span class="total-confirmed">?</span>
+              <span class="total-confirmed"><span class="loader"></span></span>
             </p>
             <p class="card-container-statistic">
               <i class="fa-solid fa-skull-crossbones"></i>
-              total deaths: <span class="total-deaths">?</span>
+              total deaths:
+              <span class="total-deaths"><span class="loader"></span></span>
             </p>
             <p class="card-container-statistic">
               <i class="fa-solid fa-briefcase-medical"></i> total recovered:
-              <span class="total-recovered">?</span>
+              <span class="total-recovered"><span class="loader"></span></span>
             </p>
           </div>
         </div>
