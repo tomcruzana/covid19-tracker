@@ -1,6 +1,7 @@
 # covid19-tracker
 
 a simple Coronavirus (COVID-19) tracking system for all countries.
+[GitHub Repo](https://github.com/tomcruzana/covid19-tracker)
 
 ## Installation
 
